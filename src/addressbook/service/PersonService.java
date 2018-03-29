@@ -5,6 +5,12 @@ import addressbook.Service;
 import addressbook.exception.ServiceException;
 import addressbook.model.Person;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +21,7 @@ public class PersonService extends Service<Person> {
 	}
 
 	@Override
-	public Person findByObject(Person model) throws ServiceException {
+	public Person findByObject(Person model) throws SQLException {
 		List<Person> people = database.getPeople();
 				
 		// search by id
@@ -35,45 +41,54 @@ public class PersonService extends Service<Person> {
 	}
 
 	@Override
-	public Person findById(long id) throws ServiceException {
-		List<Person> people = database.getPeople();
-
-		try {
-			return people.get((int) id -1);
+	public Person findById(long id) throws SQLException {
+		Person person = null;
+		PreparedStatement stmt = database.getPreparedStatement("select * from PERSON where ID =? and ACTIVE = 1");
+		stmt.setLong(1, id);
+		ResultSet rs = stmt.executeQuery();
+		if(rs.next()) {
+			person = parse(rs);
 		}
-		catch (IndexOutOfBoundsException e) {
-			// do nothing
-		}
-
-		return null;
+		rs.close();
+		stmt.close();
+		return person;
 	}
 	
 	@Override
-	public List<Person> findAll() throws ServiceException {
+	public List<Person> findAll() throws SQLException {
 		List<Person> people = new ArrayList<Person>();
-		for(Person each : database.getPeople()) {
-			if (each.isActive()) people.add(each);
+		PreparedStatement stmt = database.getPreparedStatement("select * from PERSON where ACTIVE = 1");
+		ResultSet rs = stmt.executeQuery();
+		while(rs.next()) {
+			people.add(parse(rs));
 		}
+		rs.close();
+		stmt.close();
 		return people;
 	}
 
 	@Override
-	public void create(Person model) throws ServiceException {
+	public void create(Person model) throws SQLException {
+
 		if (model == null) throw new IllegalArgumentException("This method requires an argument of type Person!");
-		if (findByObject(model) != null) throw new ServiceException("This person already exists!");
-				
+		if (findByObject(model) != null) throw new SQLException("This person already exists!");
 		List<Person> people = database.getPeople();
 		model.setActive(true);
-		model.setId(people.size()+1);		
+		model.setId(people.size()+1);
 		people.add(model);
-		
 		database.setPeople(people);
+		/*
+		String stmt = "INSERT INTO PRODUCTDATA (MAKE, MODEL, DESCRIPTION, PRICE, IMAGEURL) \n VALUES('" + make + "', '" + model + "', '" + description + "', " + price + ", '" + imageURL + "')";
+		DBManager dbMgr = new DBManager();
+		Connection con = dbMgr.getConnection();
+		executeSqlScript(con, stmtProduct);
+		*/
 	}
 
 	@Override
-	public void update(Person model) throws ServiceException {
+	public void update(Person model) throws SQLException {
 		if (model == null) throw new IllegalArgumentException("This method requires an argument of type Person!");
-		if (findByObject(model) == null) throw new ServiceException("This person does not exist!");
+		if (findByObject(model) == null) throw new SQLException("This person does not exist!");
 		
 		List<Person> people = database.getPeople();		
 		people.set((int) model.getId()-1, model);
@@ -82,9 +97,28 @@ public class PersonService extends Service<Person> {
 	}
 
 	@Override
-	public void delete(Person model) throws ServiceException {
+	public void delete(Person model) throws SQLException {
 		model.setActive(false);
 		update(model);
 	}
-	
+
+	public Person parse(ResultSet rs) throws SQLException {
+		Person person = new Person();
+
+		person.setId(rs.getLong("ID"));
+		person.setActive(rs.getBoolean("ACTIVE"));
+		person.setFirstName(rs.getString("FIRSTNAME"));
+		person.setLastName(rs.getString("LASTNAME"));
+		person.setEmail(rs.getString("EMAIL"));
+		person.setStreetAddress(rs.getString("STREETADDRESS"));
+		person.setApartment(rs.getString("APARTMENT"));
+		person.setCityAddress(rs.getString("CITYADDRESS"));
+		person.setStateAddress(rs.getString("STATEADDRESS"));
+		person.setZipAddress(rs.getLong("ZIPADDRESS"));
+		person.setDateOfBirth((rs.getDate("DATEOFBIRTH")).toLocalDate());
+		person.setImageBytes(rs.getBytes("IMAGEBYTES"));
+		person.setImageType(rs.getString("IMAGETYPE"));
+
+		return person;
+	}
 }

@@ -17,9 +17,9 @@
 	<td>City</td>
 	<td>State</td>
 	<td>Zip Code</td>
-	<td>Image</td>
 	<td>Date of Birth</td>
 	<td>Age</td>
+	<td>Image</td>
 	<td></td>
 </tr>
 <c:forEach var="person" items="${people}">

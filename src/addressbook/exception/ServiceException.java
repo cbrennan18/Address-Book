@@ -1,6 +1,8 @@
 package addressbook.exception;
 
-public class ServiceException extends Exception {
+import java.sql.SQLException;
+
+public class ServiceException extends SQLException {
 
 	private static final long serialVersionUID = 1L;
 	
