@@ -34,7 +34,7 @@ public class Person extends Model<Person> {
 	private String stateAddress;
 
 	@Require
-	private long zipAddress;
+	private String zipAddress;
 
 	@Require
 	private LocalDate dateOfBirth;
@@ -98,9 +98,9 @@ public class Person extends Model<Person> {
 
 	public void setStateAddress(String stateAddress) {this.stateAddress = stateAddress; }
 
-	public long getZipAddress() {return zipAddress; }
+	public String getZipAddress() {return zipAddress; }
 
-	public void setZipAddress(long zipAddress) {this.zipAddress = zipAddress; }
+	public void setZipAddress(String zipAddress) {this.zipAddress = zipAddress; }
 
 	public LocalDate getDateOfBirth() {return dateOfBirth; }
 
@@ -162,7 +162,7 @@ public class Person extends Model<Person> {
 		person.apartment = params.getString("apartment");
 		person.cityAddress = params.getString("cityAddress");
 		person.stateAddress = params.getString("stateAddress");
-		person.zipAddress = params.getLong("zipAddress");
+		person.zipAddress = params.getString("zipAddress");
 		person.imageBytes = params.getFileBytes("image");
 		if(person.imageBytes != null) {
 			person.imageType = params.getFileType("image");

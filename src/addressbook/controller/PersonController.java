@@ -38,9 +38,17 @@ public class PersonController extends Controller {
 	
 	public class ListAction implements Action {
 		public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			Database database = Database.getInstance();
-			PersonService svc = new PersonService(database);			
-			request.setAttribute("people", svc.findAll());			
+			Database database = null;
+			try {
+				database = new Database();
+				database.open();
+				PersonService svc = new PersonService(database);
+				request.setAttribute("people", svc.findAll());
+			}
+			finally {
+				database.close();
+			}
+
 			return basePath() + "/list.jsp";
 		}		
 	}
@@ -56,16 +64,24 @@ public class PersonController extends Controller {
 	public class EditAction implements Action {
 		public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			Params params = new Params(request);
-			Database database = Database.getInstance();
-			PersonService svc = new PersonService(database);
+			Database database = null;
+			try{
+				database = new Database();
+				database.open();
+				PersonService svc = new PersonService(database);
 
-			Person person = svc.findById(params.getLong("id"));
-			if (person == null) {
-				response.sendError(HttpServletResponse.SC_NOT_FOUND);
-				return null;
+				Person person = svc.findById(params.getLong("id"));
+				if (person == null) {
+					response.sendError(HttpServletResponse.SC_NOT_FOUND);
+					return null;
+				}
+				request.setAttribute("action", basePath() + "/update");
+				request.setAttribute("person", person);
 			}
-			request.setAttribute("action", basePath() + "/update");
-			request.setAttribute("person", person);
+			finally{
+				database.close();
+			}
+
 			return basePath() + "/form.jsp";
 		}		
 	}	
@@ -73,16 +89,24 @@ public class PersonController extends Controller {
 	public class ViewAction implements Action {
 		public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			Params params = new Params(request);
-			Database database = Database.getInstance();
-			PersonService svc = new PersonService(database);
+			Database database = null;
+			try {
+				database = new Database();
+				database.open();
+				PersonService svc = new PersonService(database);
 
-			Person person = svc.findById(params.getLong("id"));
-			if (person == null) {
-				response.sendError(HttpServletResponse.SC_NOT_FOUND);
-				return null;
+				Person person = svc.findById(params.getLong("id"));
+				if (person == null) {
+					response.sendError(HttpServletResponse.SC_NOT_FOUND);
+					return null;
+				}
+
+				request.setAttribute("person", person);
 			}
-			
-			request.setAttribute("person", person);
+			finally {
+				database.close();
+			}
+
 			return basePath() + "/view.jsp";
 		}
 	}	
@@ -93,22 +117,30 @@ public class PersonController extends Controller {
 			if (params.isGet()) throw new ServletException("This action only responds to POST requests");
 
 			Person person = new Person().parse(params);
-			Database database = Database.getInstance();
-			PersonService svc = new PersonService(database);
-			if (person.isValid()) {				
-				try {
-					svc.create(person);
-					request.getSession().setAttribute("flash", person.getFirstName() + " " + person.getLastName() + " was created!");
-					response.sendRedirect(basePath());
-					return null;					
+			Database database = null;
+			try {
+				database = new Database();
+				database.open();
+				PersonService svc = new PersonService(database);
+				if (person.isValid()) {
+					try {
+						svc.create(person);
+						request.getSession().setAttribute("flash", person.getFirstName() + " " + person.getLastName() + " was created!");
+						response.sendRedirect(basePath());
+						return null;
+					}
+					catch (ServiceException e) {
+						person.addValidationError(e.getMessage());
+					}
 				}
-				catch (ServiceException e) {
-					person.addValidationError(e.getMessage());
-				}				
+
+				request.setAttribute("action", basePath() + "/create");
+				request.setAttribute("person", person);
 			}
-			
-			request.setAttribute("action", basePath() + "/create");
-			request.setAttribute("person", person);
+			finally {
+				database.close();
+			}
+
 			return basePath() + "/form.jsp";
 		}		
 	}
@@ -118,23 +150,37 @@ public class PersonController extends Controller {
 			Params params = new Params(request);
 			if (params.isGet()) throw new ServletException("This action only responds to POST requests");
 
-			Person person = new Person().parse(params);			
-			Database database = Database.getInstance();
-			PersonService svc = new PersonService(database);
-			if (person.isValid()) {			
-				try {
-					svc.update(person);
-					request.getSession().setAttribute("flash", person.getFirstName() + " " + person.getLastName() + " was updated!");
-					response.sendRedirect(basePath()+"/view?id="+person.getId());
-					return null;
+			Person personForm = new Person().parse(params);
+			Database database =null;
+			try {
+				database = new Database();
+				database.open();
+				PersonService svc = new PersonService(database);
+				Person personExisting = svc.findById(params.getLong("id"));
+				if (personForm.getImageBytes() == null) {
+					personForm.setImageBytes(personExisting.getImageBytes());
+					personForm.setImageType(personExisting.getImageType());
 				}
-				catch (ServiceException e) {
-					person.addValidationError(e.getMessage());								
+
+				if (personForm.isValid()) {
+					try {
+						svc.update(personForm);
+						request.getSession().setAttribute("flash", personForm.getFirstName() + " " + personForm.getLastName() + " was updated!");
+						response.sendRedirect(basePath()+"/view?id="+personForm.getId());
+						return null;
+					}
+					catch (ServiceException e) {
+						personForm.addValidationError(e.getMessage());
+					}
 				}
+
+				request.setAttribute("action", basePath() + "/update");
+				request.setAttribute("person", personForm);
 			}
-			
-			request.setAttribute("action", basePath() + "/update");			
-			request.setAttribute("person", person);
+			finally {
+				database.close();
+			}
+
 			return basePath() + "/form.jsp";
 		}		
 	}
@@ -145,26 +191,34 @@ public class PersonController extends Controller {
 			if (params.isGet()) throw new ServletException("This action only responds to POST requests");
 
 
-			Database database = Database.getInstance();
-			PersonService svc = new PersonService(database);
-
-			Person person = svc.findById(params.getLong("id"));
-			if (person == null) {
-				response.sendError(HttpServletResponse.SC_NOT_FOUND);
-				return null;
-			}
-			
+			Database database = null;
 			try {
-				svc.delete(person);
-				request.getSession().setAttribute("flash", person.getFirstName() + " " + person.getLastName() + " was deleted!");
-				response.sendRedirect(basePath());
-				return null;
+				database = new Database();
+				database.open();
+				PersonService svc = new PersonService(database);
+
+				Person person = svc.findById(params.getLong("id"));
+				if (person == null) {
+					response.sendError(HttpServletResponse.SC_NOT_FOUND);
+					return null;
+				}
+
+				try {
+					svc.delete(person);
+					request.getSession().setAttribute("flash", person.getFirstName() + " " + person.getLastName() + " was deleted!");
+					response.sendRedirect(basePath());
+					return null;
+				}
+				catch (ServiceException e) {
+					person.addValidationError(e.getMessage());
+				}
+
+				request.setAttribute("person", person);
 			}
-			catch (ServiceException e) {
-				person.addValidationError(e.getMessage());								
+			finally {
+				database.close();
 			}
-			
-			request.setAttribute("person", person);
+
 			return basePath()+"/view.jsp";
 		}
 	}

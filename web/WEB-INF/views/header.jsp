@@ -14,7 +14,8 @@ else {
 pageContext.setAttribute("baseUrl", baseUrl.toString() + "/");
 
 Object flash = session.getAttribute("flash");
-if (flash != null) {
+if (flash != null
+		) {
 	session.setAttribute("flash", null);
 	request.setAttribute("flash", flash);
 }
@@ -22,9 +23,11 @@ if (flash != null) {
 %>
 <html>
 <head>
+	<title>CRUD Example</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<base href="${baseUrl}" />
 	<link href="css/main.css" rel="stylesheet"/>
+	<link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
 	<script src="javascript/jquery-1.6.2.min.js" type="text/javascript"></script>
 	<script src="javascript/application.js" type="text/javascript"></script>
 	<script type="text/javascript">	

@@ -78,11 +78,7 @@
 			<input type="text" name="zipAddress" id="zipAddress" value="${person.zipAddress}" placeholder="Zip code.." pattern="^[0-9]{5}(?:-[0-9]{4})?$"/>
 		</div>
 	</div>
-		<%-- todo
-		<div>
-			<Label>Image</Label>
-			<input type="text" name="imageUrl" value="${person.imageUrl}"/>
-		</div> --%>
+
 	<div class="row">
 		<div class="col-25">
 			<label for="image">Image</label>
