@@ -2,66 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c0d542f-ad70-48c9-bbd5-2562a788ba4e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/gson-2.8.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/views/person/index.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/javascript/jquery-serializefiles.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/javascript/mustache.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/javascript/person.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/templates/form.mst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/templates/list.mst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/templates/view.mst" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/views/footer.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/views/header.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/views/person/form.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/views/person/list.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/views/person/view.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/index.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/javascript/jquery-1.6.2.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/footer.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/header.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/person/form.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/person/list.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/person/view.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/javascript/jquery-1.6.2.min.js" afterPath="$PROJECT_DIR$/web/javascript/jquery-3.3.1.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/Controller.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/Model.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/Model.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/Params.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/Params.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$CreateAction.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$CreateAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$DeleteAction.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$DeleteAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$EditAction.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$EditAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$ListAction.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$ListAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$NewAction.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$NewAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$UpdateAction.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$UpdateAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$ViewAction.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController$ViewAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/controller/PersonController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/model/Person.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/model/Person.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/service/PersonService.class" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/WEB-INF/classes/addressbook/service/PersonService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/Controller.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/Model.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/Model.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/Params.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/Params.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$CreateAction.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$CreateAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$DeleteAction.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$DeleteAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$EditAction.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$EditAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$ListAction.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$ListAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$NewAction.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$NewAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$UpdateAction.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$UpdateAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$ViewAction.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController$ViewAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/controller/PersonController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/model/Person.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/model/Person.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Address-Book/addressbook/service/PersonService.class" afterPath="$PROJECT_DIR$/out/production/Address-Book/addressbook/service/PersonService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Address-Book.iml" afterPath="$PROJECT_DIR$/Address-Book.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/css/main.css" afterPath="$PROJECT_DIR$/out/artifacts/Address_Book_war_exploded/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/addressbook/Controller.java" afterPath="$PROJECT_DIR$/src/addressbook/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/addressbook/Model.java" afterPath="$PROJECT_DIR$/src/addressbook/Model.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/addressbook/Params.java" afterPath="$PROJECT_DIR$/src/addressbook/Params.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/addressbook/controller/PersonController.java" afterPath="$PROJECT_DIR$/src/addressbook/controller/PersonController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/addressbook/model/Person.java" afterPath="$PROJECT_DIR$/src/addressbook/model/Person.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/addressbook/service/PersonService.java" afterPath="$PROJECT_DIR$/src/addressbook/service/PersonService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/main.css" afterPath="$PROJECT_DIR$/web/css/main.css" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1105,12 +1046,12 @@
       <workItem from="1523973058806" duration="22873000" />
       <workItem from="1524150851296" duration="11669000" />
       <workItem from="1524165052291" duration="9949000" />
-      <workItem from="1524236027273" duration="12262000" />
+      <workItem from="1524236027273" duration="12828000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="284736000" />
+    <option name="totallyTimeSpent" value="285302000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1122,8 +1063,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1147,7 +1087,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3027027" sideWeight="0.48125" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16597222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16597222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
