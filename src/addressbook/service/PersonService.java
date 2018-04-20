@@ -124,7 +124,6 @@ public class PersonService extends Service<Person> {
 		stmt.close();
 	}
 
-
 	public Person parse(ResultSet rs) throws SQLException {
 		Person person = new Person();
 
@@ -138,9 +137,12 @@ public class PersonService extends Service<Person> {
 		person.setCityAddress(rs.getString("cityaddress"));
 		person.setStateAddress(rs.getString("stateaddress"));
 		person.setZipAddress(rs.getString("zipaddress"));
-		person.setDateOfBirth((rs.getDate("dateofbirth")).toLocalDate());
+		String date = (rs.getDate("dateofbirth")).toString();
+		person.setDateOfBirth(LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		person.setDateDisplay(date);
 		person.setImageBytes(rs.getBytes("imagebytes"));
 		person.setImageType(rs.getString("imagetype"));
+		person.setAge(person.calcAge());
 
 		return person;
 	}

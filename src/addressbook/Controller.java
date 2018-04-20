@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,29 +37,44 @@ public abstract class Controller extends HttpServlet {
 		return urlPattern.substring(0, urlPattern.lastIndexOf("/*"));
 	}
 		
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getPathInfo();
-		String view = null;
+	protected void doGet(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws ServletException, IOException {
+		String action = httpRequest.getPathInfo();
+		String response = null;
 		
 		try {
 			if (action == null || action.equals("") || action.equals("/")) {
-				view = defaultAction.execute(request, response);
+				response = defaultAction.execute(httpRequest, httpResponse);
 			}
 			else if (actions.get(action) == null) {
-				response.sendError(HttpServletResponse.SC_NOT_FOUND);
+				httpResponse.sendError(HttpServletResponse.SC_NOT_FOUND);
 			}
 			else {
-				view = actions.get(action).execute(request, response);
+				response = actions.get(action).execute(httpRequest, httpResponse);
 			}
 		}
 		catch (Exception e) {
 			throw new ServletException(e);
 		}
 		
-		if (view != null && !view.equals("")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/"+view);
-			if (dispatcher == null) throw new ServletException("The view file (WEB-INF/views/"+view+") was not found!");
-			dispatcher.forward(request, response);
+		if (response != null && !response.equals("")) {
+			if (response.startsWith("view:")) {
+				String view = response.substring(5);
+				RequestDispatcher dispatcher = httpRequest.getRequestDispatcher("/WEB-INF/views/"+view);
+				if (dispatcher == null) throw new ServletException("The view file (WEB-INF/views/"+view+") was not found!");
+				dispatcher.forward(httpRequest, httpResponse);
+			} else if (response.startsWith("json:")) {
+				String json = response.substring(5);
+				httpResponse.setContentType("application/json");
+				httpResponse.getWriter().print(json);
+			}
+			else if (response.startsWith("data:")) {
+				String data = response.substring(5);
+				String contentType = data.split(";")[0];
+				byte[] bytes = Base64.decode(data.split(";")[1]);
+
+				httpResponse.setContentType(contentType);
+				httpResponse.getOutputStream().write(bytes);
+			}
 		}
 	}
 

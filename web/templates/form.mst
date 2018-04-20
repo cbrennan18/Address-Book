@@ -1,0 +1,108 @@
+<div class="modal">
+    <div class ="modal-outside">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>{{title}}</h2>
+            </div>
+            <div class="modal-body" id="modal">
+                    <h2>Person</h2>
+
+                    <ul id="errors">
+                    </ul>
+                    <div class="container">
+                        <form id="{{action}}" method="post" enctype="multipart/form-data" >
+                            <input type="hidden" name="id" value="{{person.id}}">
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="firstName">First Name</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" id="firstName" name="firstName" value="{{person.firstName}}" placeholder="First name.."/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="lastName">Last Name</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" name="lastName" id="lastName" value="{{person.lastName}}" placeholder="Last name.."/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="email">Email</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="email" name="email" id="email" value="{{person.email}}" placeholder="Email address.."/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="streetAddress">Street Address</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" name="streetAddress" id="streetAddress" value="{{person.streetAddress}}"  placeholder="Street address.."/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="apartment">Apartment</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" name="apartment" id="apartment" value="{{person.apartment}}" placeholder="Apartment no.."/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="cityAddress">City</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" name="cityAddress" id="cityAddress" value="{{person.cityAddress}}"  placeholder="City.."/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="stateAddress">State</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" name="stateAddress" id="stateAddress" value="{{person.stateAddress}}" placeholder="State.."/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="zipAddress">Zip Code</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" name="zipAddress" id="zipAddress" value="{{person.zipAddress}}" placeholder="Zip code.." pattern="^[0-9]{5}(?:-[0-9]{4})?$"/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="image">Image</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="file" name="image" id="image" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <Label for="dateOfBirth">Date of Birth</Label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="date" name="dateOfBirth" id="dateOfBirth" value="{{person.dateDisplay}}"/>
+                                </div>
+                            </div>
+                            <input type="button" id="save" data-action="{{action}}" value="Save"/>
+                            <input type="button" value="Cancel" id="cancel" class="close"/>
+                        </form>
+                    </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

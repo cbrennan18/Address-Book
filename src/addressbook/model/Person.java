@@ -25,7 +25,7 @@ public class Person extends Model<Person> {
 	@Require
 	private String streetAddress;
 
-	private String apartment = "";
+	private String apartment;
 
 	@Require
 	private String cityAddress;
@@ -39,9 +39,15 @@ public class Person extends Model<Person> {
 	@Require
 	private LocalDate dateOfBirth;
 
-	private byte[] imageBytes;
+	private String dateInput;
 
-	private String imageType;
+	private String dateDisplay;
+
+	private int age;
+
+	private transient byte[] imageBytes;
+
+	private transient String imageType;
 
 
 	public Person() {}
@@ -106,7 +112,19 @@ public class Person extends Model<Person> {
 
 	public void setDateOfBirth(LocalDate dateOfBirth) {this.dateOfBirth = dateOfBirth; }
 
-	public int getAge() {
+	public String getDateInput() {return dateInput; }
+
+	public void setDateInput(String dateInput) {this.dateInput = dateInput; }
+
+	public String getDateDisplay() {return dateDisplay; }
+
+	public void setDateDisplay(String dateDisplay) {this.dateDisplay = dateDisplay; }
+
+	public int getAge() {return age;}
+
+	public void setAge(int age) {this.age = age;}
+
+	public int calcAge() {
 
 		LocalDate todaysDate = LocalDate.now();
 		return Period.between(dateOfBirth, todaysDate).getYears();
@@ -168,6 +186,9 @@ public class Person extends Model<Person> {
 			person.imageType = params.getFileType("image");
 		}
 		person.dateOfBirth = LocalDate.parse(params.getString("dateOfBirth"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		person.age = person.calcAge();
 		return person;
 	}
+
+
 }

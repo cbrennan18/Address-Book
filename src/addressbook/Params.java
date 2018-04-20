@@ -164,6 +164,9 @@ public class Params {
 		byte[] file = null;
 		try {
 			Part filePart = request.getPart(param);
+			if ( filePart == null || filePart.equals("")) {
+				return null;
+			}
 			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
 			if ( fileName == null || fileName.equals("")) {
 				return null;

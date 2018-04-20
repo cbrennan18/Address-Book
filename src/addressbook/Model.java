@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract class Model<T> {
 
-	private List<String> validationErrors = new ArrayList<String>(0);
+	private transient List<String> validationErrors = new ArrayList<String>(0);
 	
 	public Model() {}
 		
